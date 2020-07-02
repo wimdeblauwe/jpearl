@@ -4,7 +4,7 @@
 
     <groupId>io.github.wimdeblauwe</groupId>
     <artifactId>jpearl</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0-SNAPSHOT</version>
     <name>JPearl</name>
     <description>JPA Early Primary Key Library</description>
     <url>https://github.com/wimdeblauwe/jpearl</url>
@@ -46,7 +46,7 @@
         <developerConnection>scm:git:git@github.com:wimdeblauwe/jpearl.git</developerConnection>
         <connection>scm:git:git@github.com:wimdeblauwe/jpearl.git</connection>
         <url>git@github.com:wimdeblauwe/jpearl.git</url>
-        <tag>0.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <issueManagement>
         <system>github</system>
