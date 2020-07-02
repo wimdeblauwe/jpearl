@@ -9,6 +9,11 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
+/**
+ * Abstract base class for entities that want to keep track of the creation and last modified timestamps
+ *
+ * @param <T> the type of {@link EntityId} that will be used for this entity
+ */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractTimeAuditedEntity<T extends EntityId<?>> extends AbstractEntity<T> {

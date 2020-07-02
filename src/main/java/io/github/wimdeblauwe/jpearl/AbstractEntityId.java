@@ -5,6 +5,11 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Abstract super class for entity id's.
+ *
+ * @param <T> the type that the id encapsulates (E.g. UUID, Long, ...)
+ */
 @MappedSuperclass
 public abstract class AbstractEntityId<T extends Serializable> implements Serializable, EntityId<T> {
     private T id;

@@ -6,6 +6,12 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
+/**
+ * Abstract base class for entities that want to keep track of the version of the entity
+ * for optimistic locking purposes.
+ *
+ * @param <T> the type of {@link EntityId} that will be used for this entity
+ */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractVersionedEntity<T extends EntityId<?>> extends AbstractEntity<T> {
