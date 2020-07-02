@@ -1,0 +1,150 @@
+= JPearl - JPA Early Primary Key Library
+:toc: macro
+
+toc::[]
+
+== Goal
+
+The goal of the project is to provide some convenient classes and interface to use JPA with early primary key generation.
+
+It also encourages to use value objects as primary keys.
+
+== Dependency coordinates
+
+Maven coordinates to add the dependency to your project:
+
+[source,xml]
+----
+<dependency>
+    <groupId>io.github.wimdeblauwe</groupId>
+    <artifactId>jpearl</artifactId>
+    <version>LATEST_VERSION_HERE</version>
+</dependency>
+----
+
+== Usage
+
+. Create a primary value object. For example: `UserId`:
++
+[source,java]
+----
+import io.github.wimdeblauwe.jpearl.AbstractEntityId;
+
+import java.util.UUID;
+
+public class UserId extends AbstractEntityId<UUID> {
+    protected UserId() { //<.>
+    }
+
+    public UserId(UUID id) { //<.>
+        super(id);
+    }
+}
+----
+<.> A `protected` default constructor is required by JPA/Hibernate.
+<.> A `public` constructor that will be used by the application itself.
+. Create the entity. For example: `User`
++
+[source,java]
+----
+import io.github.wimdeblauwe.jpearl.AbstractEntity;
+
+import javax.persistence.Entity;
+
+@Entity //<.>
+public class User extends AbstractEntity<UserId> { //<.>
+    private String name;
+
+    protected User() { //<.>
+    }
+
+    public User(UserId id, String name) { //<.>
+        super(id);
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+----
+<.> Annotate the class with `@Entity` so JPA will discover it.
+<.> Extend from `AbstractEntity` and configure the used id class via generics.
+<.> A `protected` default constructor is required by JPA/Hibernate.
+<.> A `public` constructor that will be used by the application itself.
+. Create a repository interface. For example: `UserRepository`
++
+[source,java]
+----
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional(readOnly = true) // <.>
+public interface UserRepository extends CrudRepository<User, UserId> { //<.>
+}
+----
+<.> Mark transactions on the repo interface as read-only by default.
+If you later add finder methods to this `UserRepository` interface, then the transactions of each method will be read-only which is best for finders.
+If there is a modifying query, be sure to individually annotate that method with `@Transactional` (without the `readOnly`).
+<.> Use `CrudRepository` or `PagingAndSortingRepository` according to your needs.
+Use the entity and the entity id classes in the generics.
+
+. Create a custom interface to extend the `UserRepository` interface with custom code. Example: `UserRepositoryCustom`:
++
+[source,java]
+----
+public interface UserRepositoryCustom { //<.>
+    UserId nextId(); //<.>
+}
+----
+<.> Make sure the name of the interface is the repository name, with `Custom` suffix.
+<.> Add a method that returns the id type.
+Usually, this method is called `nextId()`.
+. Have the repository extend from the custom repository interface:
++
+[source,java]
+----
+@Transactional(readOnly = true)
+public interface UserRepository extends CrudRepository<User, UserId>, UserRepositoryCustom {
+}
+----
+. Create a class to implement the custom interface. Example: `UserRepositoryImpl`:
++
+[source,java]
+----
+import io.github.wimdeblauwe.jpearl.UniqueIdGenerator;
+
+import java.util.UUID;
+
+public class UserRepositoryImpl implements UserRepositoryCustom { //<.>
+    private final UniqueIdGenerator<UUID> generator;
+
+    public UserRepositoryImpl(UniqueIdGenerator<UUID> generator) { // <.>
+        this.generator = generator;
+    }
+
+    @Override
+    public UserId nextId() {
+        return new UserId(generator.getNextUniqueId()); // <.>
+    }
+}
+----
+<.> Be sure to name the class the repository name with `Impl` suffix
+<.> Inject the unique id generator
+<.> Generate a new unique id for each call to `nextId()`
++
+[TIP]
+====
+You usually have a repository per aggregate root.
+Entities within that root will not have their own repository, but there will be an extra method on the custom interface to generate primary keys. E.g.:
+[source,java]
+----
+public interface PostRepositoryCustom {
+    PostId nextId();
+
+    PostCommentId nextCommentId();
+}
+----
+====
+
+
