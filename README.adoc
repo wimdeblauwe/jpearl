@@ -1,6 +1,10 @@
 = JPearl - JPA Early Primary Key Library
 :toc: macro
 
+image:https://travis-ci.org/wimdeblauwe/jpearl.svg?branch=master["Build Status",link="https://travis-ci.org/wimdeblauwe/jpearl"]
+
+image:https://maven-badges.herokuapp.com/maven-central/io.github.wimdeblauwe/jpearl/badge.svg["Maven Central",link="https://search.maven.org/search?q=a:jpearl"]
+
 toc::[]
 
 == Goal
