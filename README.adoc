@@ -26,6 +26,24 @@ Maven coordinates to add the dependency to your project:
 </dependency>
 ----
 
+== Maven plugin
+
+To generate the entity and related classes, use the following direct invocation of the `jpearl-maven-plugin`:
+
+[source]
+----
+mvn io.github.wimdeblauwe:jpearl-maven-plugin:VERSION_HERE:generate -DbasePackage=com.company.app -Dentity=MyEntity
+----
+
+This will generate the following classes/interfaces:
+
+* `com.company.app.myentity.MyEntity`
+* `com.company.app.myentity.MyEntityId`
+* `com.company.app.myentity.MyEntityRepository`
+* `com.company.app.myentity.MyEntityRepositoryCustom`
+* `com.company.app.myentity.MyEntityRepositoryImpl`
+
+
 == Usage
 
 . Create a primary value object. For example: `UserId`:
