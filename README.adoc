@@ -43,6 +43,50 @@ This will generate the following classes/interfaces:
 * `com.company.app.myentity.MyEntityRepositoryCustom`
 * `com.company.app.myentity.MyEntityRepositoryImpl`
 
+If you want to shorten the command line typing, add the following to your `~/.m2/settings.xml` file:
+[source,xml]
+----
+<settings>
+    <pluginGroups>
+        <pluginGroup>io.github.wimdeblauwe</pluginGroup>
+    </pluginGroups>
+</settings>
+----
+
+You can now run:
+[source]
+----
+mvn jpearl:generate -DbasePackage=com.company.app -Dentity=MyEntity
+----
+
+
+To avoid having to specify the base package each time, configure the plugin in your project:
+
+[source,xml]
+----
+<project>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.github.wimdeblauwe</groupId>
+                    <artifactId>jpearl-maven-plugin</artifactId>
+                    <version>${jpearl.version}</version>
+                    <configuration>
+                        <basePackage>com.company.app</basePackage>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
+----
+
+The maven command now becomes as simpel as:
+[source]
+----
+mvn jpearl:generate -Dentity=MyEntity
+----
 
 == Usage
 
