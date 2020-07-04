@@ -82,7 +82,7 @@ To avoid having to specify the base package each time, configure the plugin in y
 </project>
 ----
 
-The maven command now becomes as simpel as:
+The maven command now becomes as simple as:
 [source]
 ----
 mvn jpearl:generate -Dentity=MyEntity
