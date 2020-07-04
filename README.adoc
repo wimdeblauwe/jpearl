@@ -3,7 +3,7 @@
 
 image:https://travis-ci.org/wimdeblauwe/jpearl.svg?branch=master["Build Status",link="https://travis-ci.org/wimdeblauwe/jpearl"]
 
-image:https://maven-badges.herokuapp.com/maven-central/io.github.wimdeblauwe/jpearl/badge.svg["Maven Central",link="https://search.maven.org/search?q=a:jpearl"]
+image:https://maven-badges.herokuapp.com/maven-central/io.github.wimdeblauwe/jpearl-core/badge.svg["Maven Central",link="https://search.maven.org/search?q=a:jpearl-core"]
 
 toc::[]
 
@@ -21,7 +21,7 @@ Maven coordinates to add the dependency to your project:
 ----
 <dependency>
     <groupId>io.github.wimdeblauwe</groupId>
-    <artifactId>jpearl</artifactId>
+    <artifactId>jpearl-core</artifactId>
     <version>LATEST_VERSION_HERE</version>
 </dependency>
 ----
