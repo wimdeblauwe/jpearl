@@ -43,6 +43,10 @@ This will generate the following classes/interfaces:
 * `com.company.app.myentity.MyEntityRepositoryCustom`
 * `com.company.app.myentity.MyEntityRepositoryImpl`
 
+And the following tests:
+
+* `com.company.app.myentity.MyEntityRepositoryTest`
+
 If you want to shorten the command line typing, add the following to your `~/.m2/settings.xml` file:
 [source,xml]
 ----
