@@ -39,7 +39,7 @@ public abstract class AbstractEntityId<T extends Serializable> implements Serial
             result = true;
         } else if (o instanceof AbstractEntityId) {
             AbstractEntityId other = (AbstractEntityId) o;
-            result = Objects.equals(id, other.id);
+            result = Objects.equals(getId(), other.getId());
         }
 
         return result;
@@ -47,11 +47,11 @@ public abstract class AbstractEntityId<T extends Serializable> implements Serial
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
     @Override
     public String toString() {
-        return String.format("%s[id=%s]", getClass().getSimpleName(), id);
+        return String.format("%s[id=%s]", getClass().getSimpleName(), getId());
     }
 }

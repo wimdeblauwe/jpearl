@@ -53,7 +53,7 @@ public abstract class AbstractEntity<T extends EntityId<?>> implements Entity<T>
             result = true;
         } else if (obj instanceof AbstractEntity) {
             AbstractEntity other = (AbstractEntity) obj;
-            result = Objects.equals(id, other.id);
+            result = Objects.equals(getId(), other.getId());
         }
 
         return result;
@@ -68,11 +68,11 @@ public abstract class AbstractEntity<T extends EntityId<?>> implements Entity<T>
      */
     @Override
     public final int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
     @Override
     public String toString() {
-        return String.format("%s[id=%s]", getClass().getSimpleName(), id);
+        return String.format("%s[id=%s]", getClass().getSimpleName(), getId());
     }
 }
