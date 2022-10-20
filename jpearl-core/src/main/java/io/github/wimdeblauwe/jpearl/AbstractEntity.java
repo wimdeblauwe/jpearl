@@ -51,6 +51,8 @@ public abstract class AbstractEntity<T extends EntityId<?>> implements Entity<T>
 
         if (this == obj) {
             result = true;
+        } else if (obj == null) {
+            return false;
         } else if (obj.getClass().equals(getClass())) {
             AbstractEntity<?> other = (AbstractEntity<?>) obj;
             result = Objects.equals(getId(), other.getId());

@@ -37,6 +37,8 @@ public abstract class AbstractEntityId<T extends Serializable> implements Serial
 
         if (this == o) {
             result = true;
+        } else if (o == null) {
+            return false;
         } else if (o.getClass().equals(getClass())) {
             AbstractEntityId<?> other = (AbstractEntityId<?>) o;
             result = Objects.equals(getId(), other.getId());
