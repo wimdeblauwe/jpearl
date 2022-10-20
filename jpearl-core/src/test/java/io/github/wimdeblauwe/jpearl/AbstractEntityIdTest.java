@@ -27,6 +27,13 @@ class AbstractEntityIdTest {
     }
 
     @Test
+    void entityIdIsNotEqualIfOtherIsNull() {
+        MyEntityId1 entityId1Again = new MyEntityId1(UUID.randomUUID());
+
+        assertThat(entityId1Again).isNotEqualTo(null);
+    }
+
+    @Test
     void entityIdIsNotEqualIfIdIsEqualButClassIsDifferent() {
         UUID id = UUID.randomUUID();
         MyEntityId1 entityId = new MyEntityId1(id);

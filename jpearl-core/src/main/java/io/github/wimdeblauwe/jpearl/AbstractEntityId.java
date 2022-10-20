@@ -32,11 +32,13 @@ public abstract class AbstractEntityId<T extends Serializable> implements Serial
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
         boolean result = false;
 
         if (this == o) {
             result = true;
+        } else if (o == null) {
+            return false;
         } else if (o.getClass().equals(getClass())) {
             AbstractEntityId<?> other = (AbstractEntityId<?>) o;
             result = Objects.equals(getId(), other.getId());
@@ -46,7 +48,7 @@ public abstract class AbstractEntityId<T extends Serializable> implements Serial
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(getId());
     }
 
