@@ -26,6 +26,19 @@ Maven coordinates to add the dependency to your project:
 </dependency>
 ----
 
+== Spring Boot compatibility
+
+|===
+|jpearl |Spring Boot|Minimum Java version
+
+|https://github.com/wimdeblauwe/jpearl/releases/tag/2.0.0[2.0.0]
+|3.x
+|17
+
+|https://github.com/wimdeblauwe/jpearl/releases/tag/1.2.0[1.2.0]
+|2.x
+|8
+|===
 == Maven plugin
 
 To generate the entity and related classes, use the following direct invocation of the `jpearl-maven-plugin`:
