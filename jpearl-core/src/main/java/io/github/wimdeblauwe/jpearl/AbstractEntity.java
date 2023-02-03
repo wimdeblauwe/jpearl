@@ -1,8 +1,8 @@
 package io.github.wimdeblauwe.jpearl;
 
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.MappedSuperclass;
 import java.util.Objects;
 
 /**

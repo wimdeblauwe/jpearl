@@ -2,7 +2,7 @@ package io.github.wimdeblauwe.jpearl.user;
 
 import io.github.wimdeblauwe.jpearl.AbstractEntity;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class User extends AbstractEntity<UserId> {

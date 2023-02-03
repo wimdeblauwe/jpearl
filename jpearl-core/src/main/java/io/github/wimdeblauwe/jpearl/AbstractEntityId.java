@@ -1,7 +1,7 @@
 package io.github.wimdeblauwe.jpearl;
 
 
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
 
