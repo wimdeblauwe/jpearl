@@ -2,7 +2,7 @@ package <PACKAGE>;
 
 import io.github.wimdeblauwe.jpearl.AbstractEntity;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 public class <ENTITY> extends AbstractEntity<<ENTITYID>> {
